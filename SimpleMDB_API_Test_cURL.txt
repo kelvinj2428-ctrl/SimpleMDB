@@ -1,0 +1,87 @@
+###############################################################################
+# SimpleMDB API Test - cURL Commands
+# Base URL: http://localhost:8080/api/v1
+# Run the API server first: cd SimpleMDB/src/Smdb.Api && dotnet run
+###############################################################################
+
+# =============================================================================
+# MOVIES (5 endpoints)
+# =============================================================================
+
+# 1. List Movies (GET /api/v1/movies?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/movies?page=1&size=5"
+
+# 2. Create Movie (POST /api/v1/movies)
+curl -s -X POST "http://localhost:8080/api/v1/movies" -H "Content-Type: application/json" -d "{\"title\":\"Test Movie\",\"year\":2024,\"genre\":\"Action\",\"rating\":7.5,\"description\":\"A test movie.\"}"
+
+# 3. Read Movie (GET /api/v1/movies/1)
+curl -s "http://localhost:8080/api/v1/movies/1"
+
+# 4. Update Movie (PUT /api/v1/movies/1)
+curl -s -X PUT "http://localhost:8080/api/v1/movies/1" -H "Content-Type: application/json" -d "{\"title\":\"The Godfather (Updated)\",\"year\":1972,\"genre\":\"Crime/Drama\",\"rating\":9.5,\"description\":\"Updated description.\"}"
+
+# 5. Delete Movie (DELETE /api/v1/movies/50)
+curl -s -X DELETE "http://localhost:8080/api/v1/movies/50"
+
+# =============================================================================
+# ACTORS (6 endpoints)
+# =============================================================================
+
+# 6. List Actors (GET /api/v1/actors?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/actors?page=1&size=5"
+
+# 7. Create Actor (POST /api/v1/actors)
+curl -s -X POST "http://localhost:8080/api/v1/actors" -H "Content-Type: application/json" -d "{\"firstName\":\"Robert\",\"lastName\":\"De Niro\",\"rating\":9.4,\"bio\":\"Legendary actor known for Goodfellas and Taxi Driver.\"}"
+
+# 8. Read Actor (GET /api/v1/actors/1)
+curl -s "http://localhost:8080/api/v1/actors/1"
+
+# 9. Update Actor (PUT /api/v1/actors/1)
+curl -s -X PUT "http://localhost:8080/api/v1/actors/1" -H "Content-Type: application/json" -d "{\"firstName\":\"Marlon\",\"lastName\":\"Brando\",\"rating\":9.8,\"bio\":\"Updated bio for Marlon Brando.\"}"
+
+# 10. Delete Actor (DELETE /api/v1/actors/8)
+curl -s -X DELETE "http://localhost:8080/api/v1/actors/8"
+
+# 11. List Movies by Actor (GET /api/v1/actors/1/movies?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/actors/1/movies?page=1&size=5"
+
+# =============================================================================
+# ACTOR-MOVIES (6 endpoints)
+# =============================================================================
+
+# 12. List Actor-Movies (GET /api/v1/actors-movies?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/actors-movies?page=1&size=5"
+
+# 13. Create Actor-Movie (POST /api/v1/actors-movies)
+curl -s -X POST "http://localhost:8080/api/v1/actors-movies" -H "Content-Type: application/json" -d "{\"actorId\":1,\"movieId\":1}"
+
+# 14. Read Actor-Movie (GET /api/v1/actors-movies/1)
+curl -s "http://localhost:8080/api/v1/actors-movies/1"
+
+# 15. Update Actor-Movie (PUT /api/v1/actors-movies/1)
+curl -s -X PUT "http://localhost:8080/api/v1/actors-movies/1" -H "Content-Type: application/json" -d "{\"actorId\":2,\"movieId\":1}"
+
+# 16. Delete Actor-Movie (DELETE /api/v1/actors-movies/1)
+curl -s -X DELETE "http://localhost:8080/api/v1/actors-movies/1"
+
+# 17. List Actors by Movie (GET /api/v1/movies/1/actors?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/movies/1/actors?page=1&size=5"
+
+# =============================================================================
+# USERS (5 endpoints)
+# =============================================================================
+
+# 18. List Users (GET /api/v1/users?page=1&size=5)
+curl -s "http://localhost:8080/api/v1/users?page=1&size=5"
+
+# 19. Create User (POST /api/v1/users)
+curl -s -X POST "http://localhost:8080/api/v1/users" -H "Content-Type: application/json" -d "{\"username\":\"newuser\",\"password\":\"pass123\",\"role\":\"user\"}"
+
+# 20. Read User (GET /api/v1/users/1)
+curl -s "http://localhost:8080/api/v1/users/1"
+
+# 21. Update User (PUT /api/v1/users/1)
+curl -s -X PUT "http://localhost:8080/api/v1/users/1" -H "Content-Type: application/json" -d "{\"username\":\"admin\",\"password\":\"newpass456\",\"role\":\"admin\"}"
+
+# 22. Delete User (DELETE /api/v1/users/3)
+curl -s -X DELETE "http://localhost:8080/api/v1/users/3"

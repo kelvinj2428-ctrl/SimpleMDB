@@ -1,0 +1,163 @@
+###############################################################################
+# SimpleMDB API Test - REST Client (VS Code Extension)
+# Install: "REST Client" by Huachao Mao
+# Run the API server first: cd SimpleMDB/src/Smdb.Api && dotnet run
+###############################################################################
+
+@baseUrl = http://localhost:8080/api/v1
+
+###############################################################################
+# MOVIES
+###############################################################################
+
+### 1. List Movies
+GET {{baseUrl}}/movies?page=1&size=5
+Accept: application/json
+
+### 2. Create Movie
+POST {{baseUrl}}/movies
+Content-Type: application/json
+
+{
+  "title": "Test Movie",
+  "year": 2024,
+  "genre": "Action",
+  "rating": 7.5,
+  "description": "A test movie created via REST Client."
+}
+
+### 3. Read Movie
+GET {{baseUrl}}/movies/1
+Accept: application/json
+
+### 4. Update Movie
+PUT {{baseUrl}}/movies/1
+Content-Type: application/json
+
+{
+  "title": "The Godfather (Updated)",
+  "year": 1972,
+  "genre": "Crime/Drama",
+  "rating": 9.5,
+  "description": "Updated description via REST Client."
+}
+
+### 5. Delete Movie
+DELETE {{baseUrl}}/movies/50
+Accept: application/json
+
+###############################################################################
+# ACTORS
+###############################################################################
+
+### 6. List Actors
+GET {{baseUrl}}/actors?page=1&size=5
+Accept: application/json
+
+### 7. Create Actor
+POST {{baseUrl}}/actors
+Content-Type: application/json
+
+{
+  "firstName": "Robert",
+  "lastName": "De Niro",
+  "rating": 9.4,
+  "bio": "Legendary actor known for Goodfellas and Taxi Driver."
+}
+
+### 8. Read Actor
+GET {{baseUrl}}/actors/1
+Accept: application/json
+
+### 9. Update Actor
+PUT {{baseUrl}}/actors/1
+Content-Type: application/json
+
+{
+  "firstName": "Marlon",
+  "lastName": "Brando",
+  "rating": 9.8,
+  "bio": "Updated bio for Marlon Brando."
+}
+
+### 10. Delete Actor
+DELETE {{baseUrl}}/actors/8
+Accept: application/json
+
+### 11. List Movies by Actor
+GET {{baseUrl}}/actors/1/movies?page=1&size=5
+Accept: application/json
+
+###############################################################################
+# ACTOR-MOVIES
+###############################################################################
+
+### 12. List Actor-Movies
+GET {{baseUrl}}/actors-movies?page=1&size=5
+Accept: application/json
+
+### 13. Create Actor-Movie
+POST {{baseUrl}}/actors-movies
+Content-Type: application/json
+
+{
+  "actorId": 1,
+  "movieId": 1
+}
+
+### 14. Read Actor-Movie
+GET {{baseUrl}}/actors-movies/1
+Accept: application/json
+
+### 15. Update Actor-Movie
+PUT {{baseUrl}}/actors-movies/1
+Content-Type: application/json
+
+{
+  "actorId": 2,
+  "movieId": 1
+}
+
+### 16. Delete Actor-Movie
+DELETE {{baseUrl}}/actors-movies/1
+Accept: application/json
+
+### 17. List Actors by Movie
+GET {{baseUrl}}/movies/1/actors?page=1&size=5
+Accept: application/json
+
+###############################################################################
+# USERS
+###############################################################################
+
+### 18. List Users
+GET {{baseUrl}}/users?page=1&size=5
+Accept: application/json
+
+### 19. Create User
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "password": "pass123",
+  "role": "user"
+}
+
+### 20. Read User
+GET {{baseUrl}}/users/1
+Accept: application/json
+
+### 21. Update User
+PUT {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "newpass456",
+  "role": "admin"
+}
+
+### 22. Delete User
+DELETE {{baseUrl}}/users/3
+Accept: application/json

@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "smdb-api-tests-2024",
+		"name": "SimpleMDB API Tests",
+		"description": "CRUD+L tests for all SimpleMDB API endpoints (Movies, Actors, Actor-Movies, Users)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1"
+		}
+	],
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "1. List Movies",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/movies?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				},
+				{
+					"name": "2. Create Movie",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Test Movie\",\n  \"year\": 2024,\n  \"genre\": \"Action\",\n  \"rating\": 7.5,\n  \"description\": \"A test movie.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/movies",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies"]
+						}
+					}
+				},
+				{
+					"name": "3. Read Movie",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/movies/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies", "1"]
+						}
+					}
+				},
+				{
+					"name": "4. Update Movie",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Godfather (Updated)\",\n  \"year\": 1972,\n  \"genre\": \"Crime/Drama\",\n  \"rating\": 9.5,\n  \"description\": \"Updated description.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/movies/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies", "1"]
+						}
+					}
+				},
+				{
+					"name": "5. Delete Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/movies/50",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies", "50"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Actors",
+			"item": [
+				{
+					"name": "6. List Actors",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				},
+				{
+					"name": "7. Create Actor",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Robert\",\n  \"lastName\": \"De Niro\",\n  \"rating\": 9.4,\n  \"bio\": \"Legendary actor known for Goodfellas and Taxi Driver.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actors",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors"]
+						}
+					}
+				},
+				{
+					"name": "8. Read Actor",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors", "1"]
+						}
+					}
+				},
+				{
+					"name": "9. Update Actor",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Marlon\",\n  \"lastName\": \"Brando\",\n  \"rating\": 9.8,\n  \"bio\": \"Updated bio for Marlon Brando.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actors/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors", "1"]
+						}
+					}
+				},
+				{
+					"name": "10. Delete Actor",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors/8",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors", "8"]
+						}
+					}
+				},
+				{
+					"name": "11. List Movies by Actor",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors/1/movies?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors", "1", "movies"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Actor-Movies",
+			"item": [
+				{
+					"name": "12. List Actor-Movies",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors-movies?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors-movies"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				},
+				{
+					"name": "13. Create Actor-Movie",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"actorId\": 1,\n  \"movieId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actors-movies",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors-movies"]
+						}
+					}
+				},
+				{
+					"name": "14. Read Actor-Movie",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors-movies/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors-movies", "1"]
+						}
+					}
+				},
+				{
+					"name": "15. Update Actor-Movie",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"actorId\": 2,\n  \"movieId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/actors-movies/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors-movies", "1"]
+						}
+					}
+				},
+				{
+					"name": "16. Delete Actor-Movie",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/actors-movies/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["actors-movies", "1"]
+						}
+					}
+				},
+				{
+					"name": "17. List Actors by Movie",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/movies/1/actors?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["movies", "1", "actors"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "18. List Users",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/users?page=1&size=5",
+							"host": ["{{baseUrl}}"],
+							"path": ["users"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "size", "value": "5"}
+							]
+						}
+					}
+				},
+				{
+					"name": "19. Create User",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"pass123\",\n  \"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": ["{{baseUrl}}"],
+							"path": ["users"]
+						}
+					}
+				},
+				{
+					"name": "20. Read User",
+					"request": {
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["users", "1"]
+						}
+					}
+				},
+				{
+					"name": "21. Update User",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"newpass456\",\n  \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["users", "1"]
+						}
+					}
+				},
+				{
+					"name": "22. Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {
+							"raw": "{{baseUrl}}/users/3",
+							"host": ["{{baseUrl}}"],
+							"path": ["users", "3"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
