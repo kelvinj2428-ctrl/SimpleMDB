@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Edit User • Simple Movie Database</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/styles/main.css" />
+	<script type="module" src="/scripts/users/edit.js" defer></script>
+</head>
+
+<body>
+	<header>
+		<h1>Edit User</h1>
+		<nav>
+			<ul>
+				<li><a href="/" class="btn">Home</a></li>
+				<li><a href="/users/index.html" class="btn">All Users</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main class="container">
+		<div id="status" class="status">Loading...</div>
+		<form id="user-form" class="grid">
+			<div class="field">
+				<label for="username">Username</label>
+				<input id="username" name="username" type="text" required />
+			</div>
+			<div class="field">
+				<label for="password">Password</label>
+				<input id="password" name="password" type="password" required />
+			</div>
+			<div class="field">
+				<label for="role">Role</label>
+				<select id="role" name="role">
+					<option value="user">user</option>
+					<option value="admin">admin</option>
+				</select>
+			</div>
+			<div class="form-actions">
+				<button class="btn primary" type="submit">Save Changes</button>
+				<a class="btn" href="/users/index.html">Cancel</a>
+			</div>
+		</form>
+	</main>
+</body>
+
+</html>
