@@ -56,6 +56,25 @@ import { $, apiFetch, renderStatus, clearChildren, getQueryParam } from '/script
 			}
 		});
 
+		// ── Search filter ─────────────────────────────────────────────────────
+		const searchInput = $('#search-input');
+		searchInput.addEventListener('input', () => {
+			const query = searchInput.value.toLowerCase().trim();
+			const cards = listEl.querySelectorAll('.card');
+			let visible = 0;
+			cards.forEach(card => {
+				const title = card.querySelector('.title').textContent.toLowerCase();
+				const match = title.includes(query);
+				card.style.display = match ? '' : 'none';
+				if (match) visible++;
+			});
+			if (query && visible === 0) {
+				renderStatus(statusEl, 'warn', `No movies match "${searchInput.value}".`);
+			} else {
+				renderStatus(statusEl, '', '');
+			}
+		});
+
 		// ── Page-size selector ────────────────────────────────────────────────
 		const sizeSelect = $('#page-size');
 		const pageSizes = [3, 6, 9, 12, 15];
