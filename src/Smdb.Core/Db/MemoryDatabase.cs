@@ -26,6 +26,7 @@ public class MemoryDatabase
 
         SeedMovies();
         SeedActors();
+        SeedActorMovies();
         SeedUsers();
 
         nextMovieId = Movies.Count;
@@ -103,6 +104,25 @@ public class MemoryDatabase
             new Actor(6, "Leonardo", "DiCaprio", 9.1, "Award-winning actor known for Inception and The Revenant."),
             new Actor(7, "Keanu",    "Reeves",   8.7, "Canadian actor famous for The Matrix and John Wick."),
             new Actor(8, "Morgan",   "Freeman",  9.2, "Acclaimed actor known for The Shawshank Redemption and Se7en."),
+        });
+    }
+
+    private void SeedActorMovies()
+    {
+        ActorMovies.AddRange(new ActorMovie[]
+        {
+            new ActorMovie(1,  1, 1,  "Vito Corleone"),           // Marlon Brando in The Godfather
+            new ActorMovie(2,  2, 1,  "Michael Corleone"),        // Al Pacino in The Godfather
+            new ActorMovie(3,  2, 2,  "Michael Corleone"),        // Al Pacino in The Godfather Part II
+            new ActorMovie(4,  3, 3,  "Bruce Wayne / Batman"),    // Christian Bale in The Dark Knight
+            new ActorMovie(5,  4, 3,  "The Joker"),               // Heath Ledger in The Dark Knight
+            new ActorMovie(6,  5, 9,  "Forrest Gump"),            // Tom Hanks in Forrest Gump
+            new ActorMovie(7,  6, 10, "Dom Cobb"),                // Leonardo DiCaprio in Inception
+            new ActorMovie(8,  7, 11, "Neo"),                     // Keanu Reeves in The Matrix
+            new ActorMovie(9,  8, 4,  "Ellis Boyd 'Red' Redding"),// Morgan Freeman in Shawshank Redemption
+            new ActorMovie(10, 8, 12, "Detective Somerset"),      // Morgan Freeman in Se7en
+            new ActorMovie(11, 1, 30, "Colonel Kurtz"),           // Marlon Brando in Apocalypse Now
+            new ActorMovie(12, 5, 24, "Paul Edgecomb"),           // Tom Hanks in The Green Mile
         });
     }
 
