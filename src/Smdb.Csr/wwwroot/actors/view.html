@@ -47,7 +47,24 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<h2 style="margin-top:1.5rem; color:#a5d6a7;">Movies by this Actor</h2>
+		<div id="movies-status" class="status">Loading movies...</div>
+		<div id="movies-list" class="grid cards" style="margin-top:0.5rem;"></div>
 	</main>
+
+	<template id="movie-item">
+		<div class="card">
+			<h3>
+				<span class="title"></span>
+				<span class="badge year"></span>
+			</h3>
+			<p class="meta role-text"></p>
+			<div class="row-actions">
+				<a class="btn btn-view">View Movie</a>
+			</div>
+		</div>
+	</template>
 </body>
 
 </html>

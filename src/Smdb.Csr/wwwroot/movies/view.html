@@ -51,7 +51,23 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<h2 style="margin-top:1.5rem; color:#a5d6a7;">Actors in this Movie</h2>
+		<div id="actors-status" class="status">Loading actors...</div>
+		<div id="actors-list" class="grid cards" style="margin-top:0.5rem;"></div>
 	</main>
+
+	<template id="actor-item">
+		<div class="card">
+			<h3>
+				<span class="name"></span>
+				<span class="badge role-badge"></span>
+			</h3>
+			<div class="row-actions">
+				<a class="btn btn-view">View Actor</a>
+			</div>
+		</div>
+	</template>
 </body>
 
 </html>
